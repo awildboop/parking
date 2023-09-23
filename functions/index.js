@@ -9,7 +9,7 @@ export const onRequestGet = async ({ request, next }) => {
         // And act on the element
         element(element) {
           // https://developers.cloudflare.com/workers/runtime-apis/html-rewriter#methods
-          element.setInnerContent(request.headers.Host, { html: true })
+          element.setInnerContent(request.headers.get("Host"), { html: true })
         }
       }).transform(response)
       } catch (thrown){
