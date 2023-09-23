@@ -1,3 +1,20 @@
+class DomainLoader {
+
+    element(element) {
+        console.log(element)
+        // element.replace(default_header);
+    }
+}
+
+export default {
+    async fetch(request, env) {
+        const url = new URL(request.URL);
+        console.log("test");
+        return env.ASSETS.fetch(request);
+    }
+}
+/*
+
 
 class DomainLoader {
 
@@ -15,3 +32,5 @@ async function handleRequest(req) {
 addEventListener('fetch', event => {
     event.respondWith(handleRequest(event.request));
 })
+
+*/
