@@ -7,6 +7,8 @@ export const onRequestGet = async ({ request, next }) => {
       return new HTMLRewriter().on('h1', {
         // And act on the element
         element(element) {
+            console.log(request)
+
           // https://developers.cloudflare.com/workers/runtime-apis/html-rewriter#methods
           element.setInnerContent("replaced!", { html: true })
         }
