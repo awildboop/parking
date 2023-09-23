@@ -1,18 +1,12 @@
-class DomainLoader {
-
-    element(element) {
-        console.log(element)
-        // element.replace(default_header);
-    }
-}
-
 export default {
     async fetch(request, env) {
-        const url = new URL(request.URL);
-        console.log("test");
-        return env.ASSETS.fetch(request);
-    }
-}
+      const url = new URL(request.url);
+      // Otherwise, serve the static assets.
+      // Without this, the Worker will error and no assets will be served.
+      return env.ASSETS.fetch(request);
+    },
+  }
+  
 /*
 
 
