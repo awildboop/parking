@@ -10,7 +10,7 @@ export const onRequestGet = async ({ request, next }) => {
         element(element) {
           // https://developers.cloudflare.com/workers/runtime-apis/html-rewriter#methods
           element.setInnerContent("replaced!", { html: true })
-          element.after("<script>console.log("+rqeuest+")</script>", { html: true })
+          element.after("<script>console.log("+request+")</script>", { html: true })
         }
       }).transform(response)
       } catch (thrown){
