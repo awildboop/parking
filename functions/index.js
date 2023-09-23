@@ -1,5 +1,5 @@
 export const onRequestGet = async ({ request, next }) => {
-    console.log(request)
+    console.log(JSON.stringify(request))
     try{
       // Get the static asset response
       const response = await next()
