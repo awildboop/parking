@@ -1,10 +1,33 @@
+export default {
+    async fetch(request) {
+        class DomainLoader {
+            element(element) {
+                console.log(element)
+                // element.replace(default_header);
+            }
+        }
+
+        const rewriter = new HTMLRewriter()
+            .on("h1", new DomainLoader());
+
+        const res = await fetch(request);
+        const contentType = res.headers.get("Content-Type");
+
+        if (contentType.startsWith("text/html")) {
+            return rewriter.transform(res);
+        } else {
+            return res;
+        }
+    }
+}
+
+/*
 class DomainLoader {
     element(element) {
         console.log(element)
         // element.replace(default_header);
     }
 }
-
 
 export default {
     async fetch(request, env) {
@@ -19,9 +42,11 @@ export default {
         return new HTMLRewriter().on('h1', new DomainLoader()).transform(res);
     },
   }
-  
-/*
+*/
 
+/* -------------------- */
+
+/*
 class DomainLoader {
     element(element) {
         console.log(element)
